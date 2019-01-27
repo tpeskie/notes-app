@@ -20,6 +20,6 @@ export async function main({body, requestContext}, context) {
     await dynamoDbLib.call("put", params);
     return success(params.Item);
   } catch (error) {
-    return failure({status: false, error});
+    return failure({error});
   }
 }
