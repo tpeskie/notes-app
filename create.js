@@ -18,8 +18,7 @@ export async function main({body, requestContext}, context) {
 
   try {
     await dynamoDbLib.call("put", params);
-    return success(params.Item);
-  } catch (error) {
-    return failure({error});
-  }
+    return success({status: 'Note created.', ...params.Item});
+  } 
+  catch (error) {return failure(error)}
 }

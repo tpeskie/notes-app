@@ -14,6 +14,5 @@ export async function main(event, context) {
     const result = await dynamoDbLib.call('query', params);
     return success(result.Items);
   } 
-  catch(error) {return failure(error)};
-
+  catch(error) {return failure(error)}
 }

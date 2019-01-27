@@ -3,7 +3,7 @@ export function success(body) {
 }
 
 export function failure(error = {}) {
-  body = {status: false, ...error};
+  body = {status: 'Error accessing database.', ...error};
   return buildResponse(500, body);
 }
 
