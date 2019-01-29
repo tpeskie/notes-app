@@ -1,13 +1,13 @@
-export function success(body) {
-  return buildResponse(200, body);
+export function success(body = {}, statusCode = 200) {
+  return buildResponse(body, statusCode);
 }
 
-export function failure(error = {}) {
+export function failure(error = {}, statusCode = 500) {
   body = {status: 'Error accessing database.', ...error};
-  return buildResponse(500, body);
+  return buildResponse(body, statusCode);
 }
 
-function buildResponse(statusCode, body) {
+function buildResponse(body, statusCode) {
   return {
     statusCode,
     headers: {
