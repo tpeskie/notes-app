@@ -3,7 +3,8 @@ export function success(body = {}, statusCode = 200) {
 }
 
 export function failure(error = {}, statusCode = 500) {
-  body = {status: 'Error accessing database.', ...error};
+  error = typeof error == 'object' ? error : {message: error}
+  const body = {status: 'Error accessing database.', ...error};
   return buildResponse(body, statusCode);
 }
 
