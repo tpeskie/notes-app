@@ -11,9 +11,8 @@ export async function main(event, context) {
   };
 
   try {
-    throw new Error('forced');
     await dynamoDbLib.call("delete", params);
-    return success({status: 'Note deleted.'});
+    return success({message: 'Note deleted.'}, 204);
   } 
-  catch(error) {return failure(error, 1000)}
+  catch(error) {return failure(error)}
 }

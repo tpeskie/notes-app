@@ -2,9 +2,10 @@ export function success(body = {}, statusCode = 200) {
   return buildResponse(body, statusCode);
 }
 
-export function failure(error = {}, statusCode = 500) {
-  error = typeof error == 'object' ? error : {message: error}
-  const body = {status: 'Error accessing database.', ...error};
+export function failure(error = {}, statusCode) {
+  error = typeof error == 'object' ? error : {message: error};
+  statusCode = error.statusCode || statusCode || 500;
+  const body = {message: 'Error accessing database.', ...error};
   return buildResponse(body, statusCode);
 }
 

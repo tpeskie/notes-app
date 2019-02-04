@@ -12,7 +12,8 @@ export async function main(event, context) {
 
   try {
     const result = await dynamoDbLib.call('query', params);
-    return success(result.Items);
+    const code = (result.Items.length > 0) ? 200 : 204;
+    return success(result.Items, code);
   } 
   catch(error) {return failure(error)}
 }
